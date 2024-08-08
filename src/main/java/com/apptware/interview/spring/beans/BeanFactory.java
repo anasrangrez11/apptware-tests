@@ -9,7 +9,16 @@ public class BeanFactory {
 
   @Autowired private ApplicationContext context;
 
+  // Creating the bean objects manually and giving the specific string value,
+  // so the Spring doesn't get confused on how to create them.
   public OnDemand getOnDemandBean(SomeEnum someEnum, String someString) {
-    return context.getBean(BaseOnDemand.class, someString);
+    if(someEnum == SomeEnum.SOME_ENUM_A){
+      return new OnDemandA(someString);
+    } else if (someEnum == SomeEnum.SOME_ENUM_B){
+      return new OnDemandB(someString);
+    } else {
+      throw new IllegalArgumentException("Unknown enum value: " + someEnum);
+    }
+//    return context.getBean(BaseOnDemand.class, someString);
   }
 }

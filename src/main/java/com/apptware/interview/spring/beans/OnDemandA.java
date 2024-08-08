@@ -2,7 +2,7 @@ package com.apptware.interview.spring.beans;
 
 import org.springframework.stereotype.Component;
 
-@Component
+//Removed the @Component annotation so spring won't need to create these beans automatically.
 class OnDemandA extends BaseOnDemand {
 
   OnDemandA(String someString) {

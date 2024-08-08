@@ -8,6 +8,13 @@ public class Singleton {
 
   private Singleton() {
     s = "Hello I am a string part of Singleton class";
+
+    // If instance is not null, means instance is already created
+    // Throwing an exception when instance is created, or when someone tries reflection
+    // Reflection can be caused to destroy singleton property of the singleton class.
+    if (single_instance != null) {
+      throw new IllegalStateException("Cannot create another instance of Singleton");
+    }
   }
 
   public static synchronized Singleton getInstance() {
